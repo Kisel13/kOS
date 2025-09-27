@@ -81,6 +81,14 @@ pub fn hlt_loop() -> ! {
     }
 }
 
+#[macro_export]
+macro_rules! ktrace {
+    ($($arg:tt)*) => {{
+        $crate::serial_print!("\n[{}:{}] ", file!(), line!());
+        $crate::serial_println!($($arg)*);
+    }};
+}
+
 #[cfg(test)]
 use bootloader::{BootInfo, entry_point};
 use x86_64::structures::paging::{Size4KiB};

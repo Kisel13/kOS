@@ -71,5 +71,10 @@ Read [LICENSE] and [LICENSE-GPL]
   - [X] Memory management, allocator
   - [X] Serial driver
   - [X] PS/2 keyboard
-  - [ ] Mutitasking
+  - [X] Mutitasking
     - [X] Async/Await implementation
+  - [X] Block device driver
+    - [X] Test ramdisk
+    - [ ] SATA driver
+    - [ ] CMOS RTC driver
+    - [ ] FAT32 driver

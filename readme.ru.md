@@ -70,5 +70,10 @@ sudo dd if=target/x86_64-kos/debug/bootimage-kos.bin of=/dev/sdX conv=fsync stat
   - [X] Управление памятью, аллокатор.
   - [X] Драйвер serial шины.
   - [X] PS/2 клавиатура
-  - [ ] Многозадачность
+  - [X] Многозадачность
     - [X] Реализация Async/Await
+  - [X] Драйвер блочных устройств
+    - [X] Тестовый ramdisk
+    - [ ] Драйвер SATA
+    - [ ] Драйвер CMOS RTC
+    - [ ] Драйвер FAT32 (ЖИР32)

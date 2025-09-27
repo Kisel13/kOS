@@ -61,6 +61,10 @@ impl Executor {
         }
     }
 
+    pub fn run_ready_once(&mut self) {
+        self.run_ready_tasks();
+    }
+
     fn sleep_if_idle(&self) {
         use x86_64::instructions::interrupts::{self, enable_and_hlt};
 

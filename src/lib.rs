@@ -84,7 +84,7 @@ pub fn hlt_loop() -> ! {
 #[macro_export]
 macro_rules! ktrace {
     ($($arg:tt)*) => {{
-        $crate::serial_print!("\n[{}:{}] ", file!(), line!());
+        $crate::serial_print!("[{}:{}] ", file!(), line!());
         $crate::serial_println!($($arg)*);
     }};
 }

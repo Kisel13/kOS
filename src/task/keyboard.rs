@@ -64,7 +64,7 @@ pub async fn print_keypresses() {
             },
             KeyboardEvent::KeyRelease(decoded) => match decoded {
                 DecodedKey::Unicode(c) => {
-                    // обычно отпуск клавиши можно игнорировать или выводить в дебаг
+                    // ignoring key release
                     print!("<Release {}>", c);
                 }
                 DecodedKey::RawKey(k) => print!("<Release {:?}>", k),

@@ -2,8 +2,6 @@
 
 > Languages: English | [Russian](readme.ru.md)
 
-
-
 ###### Fork of the Blog OS, operating system from [Writing an OS in Rust](https://os.phil-opp.com) series. See [LICENSE].
 
 [LICENSE]: LICENSE
@@ -44,7 +42,7 @@ You can run the disk image in almost any x86_64 emulator.
 You can also write the image to an USB stick for booting it on a real machine. On Linux, the command for this is:
 
 ```
-sudo dd if=target/x86_64-kos/debug/bootimage-kos.bin of=/dev/ conv=fsync status=progress
+sudo dd if=target/x86_64-kos/debug/bootimage-kos.bin of=/dev/sdX conv=fsync status=progress
 ```
 
 Where `sdX` is the device name of your USB stick. 
@@ -72,6 +70,6 @@ Read [LICENSE] and [LICENSE-GPL]
   - [X] Catching CPU exceptions
   - [X] Memory management, allocator
   - [X] Serial driver
-  - [X] Keyboard
+  - [X] PS/2 keyboard
   - [ ] Mutitasking
     - [X] Async/Await implementation

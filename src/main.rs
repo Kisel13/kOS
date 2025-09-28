@@ -12,6 +12,7 @@ use kos::task::{executor::Executor};
 use bootloader::{BootInfo, entry_point};
 use core::panic::PanicInfo;
 use kos::drivers::tty::Color;
+use kos::drivers::rtc::Rtc;
 
 entry_point!(kernel_main);
 
@@ -26,6 +27,9 @@ fn kernel_main(boot_info: &'static BootInfo) -> ! {
     let mut frame_allocator = unsafe { BootInfoFrameAllocator::init(&boot_info.memory_map) };
      
     kos::init(&mut mapper, &mut frame_allocator);
+
+    println!("Time: {:?}", Rtc::read_time());
+    println!("Date: {:?}", Rtc::read_date());
 
     #[cfg(test)]
     test_main();

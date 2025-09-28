@@ -47,7 +47,7 @@ pub enum RamDiskError {
 }
 
 impl RamDisk {
-    /// Создать RAM-диск из статического массива
+    /// Create ramdisk from static list
     pub fn new(storage: &'static mut [u8], block_size: usize) -> Self {
         let blocks = storage.len() / block_size;
         Self {
@@ -58,7 +58,7 @@ impl RamDisk {
         }
     }
 
-    /// Чтение блока
+    /// Read block
     pub fn read_block(&self, block_id: usize, buf: &mut [u8]) -> Result<(), RamDiskError> {
         let start = block_id * self.block_size;
         let end = start + self.block_size;
@@ -74,7 +74,7 @@ impl RamDisk {
         Ok(())
     }
 
-    /// Запись блока
+    /// Write block
     pub fn write_block(&mut self, block_id: usize, data: &[u8]) -> Result<(), RamDiskError> {
         let start = block_id * self.block_size;
         let end = start + self.block_size;
@@ -90,16 +90,14 @@ impl RamDisk {
         Ok(())
     }
 
-    /// Для теста: добавить данные из include_bytes
     pub fn fill_from_bytes(&mut self, data: &'static [u8]) {
         let len = self.storage.len().min(data.len());
         self.storage[..len].copy_from_slice(&data[..len]);
     }
 }
 
-/// Создание Arc<RamDisk> для тестов
+/// Creates Arc<Mutex<RanDisk>>
 pub fn create_ramdisk(size: usize) -> Arc<Mutex<RamDisk>> {
-    // Преобразуем Box<[u8]> в &'static mut [u8] через into_raw
     let boxed: Box<[u8]> = vec![0u8; size].into_boxed_slice();
     let ptr = Box::into_raw(boxed);
     let buffer: &'static mut [u8] = unsafe { &mut *ptr };

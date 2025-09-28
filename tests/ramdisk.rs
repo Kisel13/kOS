@@ -62,7 +62,7 @@ mod ramdisk_blockdevice_tests {
 
     #[test_case]
     fn ramdisk_multiple_blocks() {
-        let rd = create_ramdisk(2048); // 4 блока по 512
+        let rd = create_ramdisk(2048); // 4 512b blocks
         let dev = RamDiskDevice::new(rd.clone());
 
         dev.write_sector(0, &[1u8; 512]).unwrap();
@@ -79,7 +79,7 @@ mod ramdisk_blockdevice_tests {
 
     #[test_case]
     fn ramdisk_out_of_range() {
-        let rd = create_ramdisk(1024); // всего 2 блока
+        let rd = create_ramdisk(1024); // 
         let dev = RamDiskDevice::new(rd.clone());
 
         let mut buf = [0u8; 512];
